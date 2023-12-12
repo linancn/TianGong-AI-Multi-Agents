@@ -1,0 +1,13 @@
+arxiv
+duckduckgo-search
+e2b
+langchain
+openai
+pdfplumber
+pinecone-client
+python-dotenv
+requests
+tenacity
+tiktoken
+unstructured[all-docs]
+xata
