@@ -4,6 +4,10 @@ from dotenv import load_dotenv
 from langchain.agents import AgentExecutor
 from langchain.agents.format_scratchpad import format_to_openai_function_messages
 from langchain.agents.output_parsers import OpenAIFunctionsAgentOutputParser
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.callbacks.streaming_stdout_final_only import (
+    FinalStreamingStdOutCallbackHandler,
+)
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.tools import DuckDuckGoSearchRun
@@ -19,6 +23,7 @@ def env_agent():
         model=os.getenv("OPENAI_MODEL"),
         temperature=0,
         verbose=True,
+        streaming=True,
     )
 
     MEMORY_KEY = "chat_history"
@@ -51,6 +56,11 @@ def env_agent():
         | OpenAIFunctionsAgentOutputParser()
     )
 
-    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+    agent_executor = AgentExecutor(
+        agent=agent,
+        tools=tools,
+        verbose=True,
+        return_intermediate_steps=True,
+    )
 
     return agent_executor
