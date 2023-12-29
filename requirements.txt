@@ -1,6 +1,8 @@
+apache-airflow
 arxiv
 duckduckgo-search
 e2b
+httpx
 langchain
 openai
 pdfplumber

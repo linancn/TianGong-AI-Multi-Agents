@@ -148,10 +148,4 @@ dmypy.json
 
 .env_bakcup
 
-config/
-
-dags/
-
 logs/
-
-plugins/

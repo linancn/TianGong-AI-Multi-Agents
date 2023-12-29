@@ -19,7 +19,7 @@ source .venv/bin/activate
 Install requirements:
 
 ```bash
-pip install --upgrade pip
+pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install -r requirements.txt --upgrade
 
@@ -32,11 +32,11 @@ Compose up Airflow:
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.0/docker-compose.yaml'
 
 mkdir -p ./dags ./logs ./plugins ./config
-echo -e "AIRFLOW_UID=$(id -u)" > .env
+echo -e "\nAIRFLOW_UID=$(id -u)" >> .env
 
 docker compose up airflow-init
 
-docker compose up
+docker compose up -d
 ```
 
 
