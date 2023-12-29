@@ -26,20 +26,19 @@ pip install -r requirements.txt --upgrade
 pip freeze > requirements_freeze.txt
 ```
 
-```bash
-sudo apt install python3.11-dev
-sudo apt install libmagic-dev
-sudo apt install poppler-utils
-sudo apt install tesseract-ocr
-sudo apt install libreoffice
-sudo apt install pandoc
-```
-
-Install Cuda (optional):
+Compose up Airflow:
 
 ```bash
-sudo apt install nvidia-cuda-toolkit
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.0/docker-compose.yaml'
+
+mkdir -p ./dags ./logs ./plugins ./config
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+
+docker compose up airflow-init
+
+docker compose up
 ```
+
 
 ### Auto Build
 

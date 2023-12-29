@@ -12,10 +12,14 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.tools import DuckDuckGoSearchRun
 from langchain.tools.render import format_tool_to_openai_function
-
-from tools.lca_db import LCA_DB 
+from xata.client import XataClient
 
 load_dotenv()
+
+xata = XataClient(api_key=os.getenv("XATA_API_KEY"), db_url=os.getenv("XATA_DB_URL"))
+
+results = xata.data().search_branch({"query": "milk","tables": ["process"]})
+
 
 
 def env_agent():
@@ -33,7 +37,7 @@ def env_agent():
         [
             (
                 "system",
-                "Your role is to act as a representative from China's Ministry of Ecology and Environment, expressing deep concern about the improper disposal of waste batteries leading to environmental pollution and ecological risks.",
+                "You are a world-class expert in Life Cycle Assessment (LCA) modeling. Strictly follow the specified user input to continue with LCA modeling and calculations.",
             ),
             MessagesPlaceholder(variable_name=MEMORY_KEY),
             ("user", "{input}"),
