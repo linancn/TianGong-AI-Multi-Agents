@@ -3,15 +3,19 @@
 
 ## Env Preparing
 
-### Using VSCode Dev Contariners
+Install `Python 3.11`
 
-[Tutorial](https://code.visualstudio.com/docs/devcontainers/tutorial)
-
-Python 3 -> Additional Options -> 3.11-bullseye -> ZSH Plugins (Last One) -> Trust @devcontainers-contrib -> Keep Defaults
+```bash
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.11
+```
 
 Setup `venv`:
 
 ```bash
+sudo apt install python3.11-venv
 python3.11 -m venv .venv
 source .venv/bin/activate
 ```
@@ -29,14 +33,19 @@ pip freeze > requirements_freeze.txt
 Compose up Airflow:
 
 ```bash
-curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.0/docker-compose.yaml'
-
 mkdir -p ./dags ./logs ./plugins ./config
 echo -e "\nAIRFLOW_UID=$(id -u)" >> .env
 
 docker compose up airflow-init
 
 docker compose up -d
+```
+
+### Variable settings
+```
+localhost:8080 -> Admin -> Variables -> Add new record
+Key: FAST_API_TOKEN #an example
+Val: #your token defined in server
 ```
 
 
