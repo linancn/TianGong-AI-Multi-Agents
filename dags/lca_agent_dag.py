@@ -4,6 +4,7 @@ import httpx
 from airflow import DAG
 from airflow.models import Variable
 from airflow.operators.python import PythonOperator
+from airflow.operators.empty import EmptyOperator as DummyOperator
 from httpx import RequestError
 
 BASE_URL = "http://host.docker.internal:8000"
@@ -70,6 +71,7 @@ with DAG(
     tags=["lca_agent"],
     catchup=False,
 ) as dag:
+
     task_1 = PythonOperator(
         task_id="openai",
         python_callable=openai,
@@ -79,5 +81,16 @@ with DAG(
         task_id="agent",
         python_callable=agent,
     )
+    # task_3 = DummyOperator(
+    #     task_id="start1",
+    # )
+    # task_4 = DummyOperator(
+    #     task_id="start2",
+    # )
+    # task_5 = DummyOperator(
+    #     task_id="end",
+    # )
+
 
     task_1 >> task_2
+    # task_1 >> task_2 >> [task_3, task_4] >> task_5
