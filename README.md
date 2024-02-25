@@ -32,7 +32,14 @@ pip freeze > requirements_freeze.txt
 
 Compose up Airflow:
 
+Optioncally, you can modify the following command to download an latest Airflow server.
+
 ```bash
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.1/docker-compose.yaml'
+```
+
+```bash
+
 mkdir -p ./dags ./logs ./plugins ./config
 echo -e "\nAIRFLOW_UID=$(id -u)" >> .env
 
@@ -42,12 +49,12 @@ docker compose up -d
 ```
 
 ### Variable settings
-```
+
+http://localhost:8080/login/
+
 localhost:8080 -> Admin -> Variables -> Add new record
 Key: FAST_API_TOKEN #an example
 Val: #your token defined in server
-```
-
 
 ### Auto Build
 
