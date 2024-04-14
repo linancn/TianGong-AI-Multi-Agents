@@ -1,15 +1,2 @@
 apache-airflow
-arxiv
-duckduckgo-search
-e2b
 httpx
-langchain
-openai
-pdfplumber
-pinecone-client
-python-dotenv
-requests
-tenacity
-tiktoken
-unstructured[all-docs]
-xata

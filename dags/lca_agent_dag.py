@@ -7,7 +7,7 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.empty import EmptyOperator as DummyOperator
 from httpx import RequestError
 
-BASE_URL = "http://host.docker.internal:8000"
+BASE_URL = "http://host.docker.internal:7778"
 TOKEN = Variable.get("FAST_API_TOKEN")
 
 
