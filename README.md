@@ -37,7 +37,7 @@ Compose up Airflow:
 Optioncally, you can modify the following command to download an latest Airflow server.
 
 ```bash
-curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.0/docker-compose.yaml'
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.2/docker-compose.yaml'
 ```
 
 ```bash
