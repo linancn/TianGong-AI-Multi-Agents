@@ -149,3 +149,5 @@ dmypy.json
 .env_bakcup
 
 logs/
+
+results
